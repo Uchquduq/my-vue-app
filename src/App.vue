@@ -26,14 +26,22 @@ interface Country {
 
 const countries = ref<Country[]>([]); 
 
+const loading = ref(false);
 
 async function getCountries() {
-  const { data } = await supabaseClient.from('countries').select()
-  console.log(data)
-  if(data) {
-    countries.value = data
-  }else {
-    countries.value = []
+  try {
+    loading.value = true
+    const { data } = await supabaseClient.from('countries').select()
+    console.log(data)
+    if(data) {
+      countries.value = data
+    } else {
+      countries.value = []
+    }
+  } catch (error) {
+    console.log(error)
+  } finally {
+    
   }
 }
 
@@ -44,18 +52,19 @@ onMounted(() => {
 
 <template>
   <div>
-    <header class="bg-[#6c47ff]"> 
+    <header class="bg-[#f9f7f1;
+]"> 
       <div class="container flex justify-between items-center h-20">
-        <div class="text-2xl font-extrabold text-white">SupabaseAuth</div>
+        <div class="text-2xl font-extrabold text-black">Donishmandlar</div>
         <nav class="flex items-center">
-          <RouterLink to="/" class="text-white mx-4 font-semibold"
-            >Home (UnProtected)</RouterLink
+          <RouterLink to="/" class="text-black mx-4 text-xl font-semibold"
+            >Bosh sahifa</RouterLink
           >
-          <RouterLink v-if="!authUser" to="/auth" class="text-white mx-4 font-semibold"
-            >Auth (UnProtected)</RouterLink
+          <RouterLink v-if="!authUser" to="/auth" class="text-black mx-4 text-xl font-semibold"
+            >Ro'yxatdan o'tish</RouterLink
           >
-          <RouterLink v-else to="/profile" class="text-white mx-4 font-semibold"
-            >Profile (Protected)</RouterLink
+          <RouterLink v-else to="/profile" class="text-black mx-4 text-xl font-semibold"
+            >Akkaunt</RouterLink
           >
         </nav>
       </div>
@@ -69,3 +78,15 @@ onMounted(() => {
     </main>
   </div>
 </template>
+
+<style >
+
+body {
+  /* font-family: "Droid Serif", serif; */
+  font-family: "Playfair Display", serif;
+
+  font-size: 14px;
+  color: #2f2f2f;
+  background-color: #f9f7f1;
+}
+</style>

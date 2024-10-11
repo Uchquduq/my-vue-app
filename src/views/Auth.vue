@@ -6,10 +6,10 @@
       >
         <div class="mb-6 flex flex-col gap-6">
           <div class="flex items-center gap-3">
-            <h1 class="text-primary text-2xl">Vue3 & Supabase</h1>
+            <h1 class="flex justify-center w-full text-center text-primary text-2xl">Ro'yxatdan o'tish</h1>
           </div>
-          <p class="text-neutral-400 text-auth-widget-test">
-            Authenticate the vue 3 app using supabase
+          <p class="text-center text-neutral-400 text-auth-widget-test">
+            Boshqa saytlardagi akkaunt yordamida ro'yxatdan o'tish  
           </p>
         </div>
         <Auth
